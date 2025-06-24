@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizações do ERP - Versão 1.1.971.200</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .changelog-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #3498db;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .version {
+            background-color: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .update-type {
+            margin-top: 20px;
+        }
+        
+        .new-feature {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .bug-fix {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+            list-style-type: none;
+            padding-left: 25px;
+        }
+        
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .impact-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .next-steps {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        
+        .client-tag {
+            display: inline-block;
+            background-color: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .changelog-container {
+                padding: 20px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        .whatsapp-link {
+            color: #075E54;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .whatsapp-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="changelog-container">
+        <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">Versão 1.1.971.201</span></h1>
+        <p><strong>Data de lançamento:</strong> 12/06/2025</p>
+        
+        <h2><span class="emoji">💻</span> Módulo PDV - Versão 1.1.971.201</h2>
+        <div class="update-type">
+            <p class="new-feature">✨ Novas Funcionalidades:</p>
+            <ul>
+                <li><strong>Desistência de NFC-e</strong> - Possibilidade de cancelar a emissão antes da confirmação <span class="client-tag">Trajano</span></li>
+                <li><strong>Senha para troca de moedas</strong> - Nova camada de segurança no caixa <span class="client-tag">Trajano</span></li>
+                <li><strong>Novas modalidades de frete</strong> - Adicionadas duas novas opções para notas avulsas <span class="client-tag">Farmapop</span></li>
+                <li><strong>Pagamento via PIX</strong> - Nova opção de pagamento disponível <span class="client-tag">Correção Interna</span></li>
+            </ul>
+            
+            <p class="bug-fix">🐞 Correções:</p>
+            <ul>
+                <li><strong>NF-e de devolução</strong> - Ajuste para produtos controlados com múltiplos lotes <span class="client-tag">Correção Interna</span></li>
+                <li><strong>Venda de itens promocionais</strong> - Correção para produtos em Pré-vencidos e tabloides <span class="client-tag">DPPSS</span></li>
+                <li><strong>Notificações de controlados</strong> - Limite de 10 caracteres implementado <span class="client-tag">Botânica</span></li>
+                <li><strong>Venda de produtos e serviços</strong> - Correção no mesmo cupom <span class="client-tag">Daniele Brum</span></li>
+                <li><strong>NF-e referenciada</strong> - Ajuste no cálculo com valor de frete <span class="client-tag">Bom Lar</span></li>
+                <li><strong>Gerenciamento de entregas</strong> - Correção no campo entregador <span class="client-tag">Bom Lar</span></li>
+                <li><strong>Inventário por grupo/subgrupo</strong> - Ajuste na filtragem <span class="client-tag">José Vione</span></li>
+                <li><strong>Restrição de pagamento</strong> - Correção na configuração para bloquear moeda dinheiro <span class="client-tag">Farmácia São Carlos</span></li>
+            </ul>
+        </div>
+        
+        <div class="impact-section">
+            <h3><span class="emoji">⚙️</span> Impacto para os Clientes</h3>
+            <ul>
+                <li><strong>Farmácias:</strong> Melhorias significativas no controle de medicamentos controlados</li>
+                <li><strong>Varejo:</strong> Maior flexibilidade em pagamentos e fretes</li>
+                <li><strong>Segurança:</strong> Novos controles para operações sensíveis</li>
+                <li><strong>Usabilidade:</strong> Correções que agilizam processos diários</li>
+            </ul>
+        </div>
+        
+        <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tela</th>
+                    <th>Código</th>
+                    <th>Mudança</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>707pc</td>
+                    <td>#0125-000790</td>
+                    <td>Correção na geração de NF-e de devolução para produtos com múltiplos lotes</td>
+                </tr>
+                <tr>
+                    <td>pdv002is</td>
+                    <td>#0325-000324</td>
+                    <td>Ajuste na inclusão de itens promocionais (Pré-vencidos e tabloides)</td>
+                </tr>
+                <tr>
+                    <td>610</td>
+                    <td>#0325-000361</td>
+                    <td>Limite de 10 caracteres em notificações de produtos controlados</td>
+                </tr>
+                <tr>
+                    <td>002nfg</td>
+                    <td>#0525-000173</td>
+                    <td>Nova opção para cancelar emissão de NFC-e antes da confirmação</td>
+                </tr>
+                <tr>
+                    <td>002m</td>
+                    <td>#0525-000178</td>
+                    <td>Implementação de senha para operação de troca de moedas</td>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>#0525-000183</td>
+                    <td>Correção na venda combinada de produtos e serviços</td>
+                </tr>
+                <tr>
+                    <td>pdv708</td>
+                    <td>#0525-000340</td>
+                    <td>Ajuste na geração de NF-e referenciada com valores de frete</td>
+                </tr>
+                <tr>
+                    <td>pdv244e</td>
+                    <td>#0525-000482</td>
+                    <td>Correção no gerenciamento de dados do entregador</td>
+                </tr>
+                <tr>
+                    <td>11m</td>
+                    <td>#0525-000816</td>
+                    <td>Ajuste no filtro de inventário por grupo/subgrupo</td>
+                </tr>
+                <tr>
+                    <td>pdvini</td>
+                    <td>#0525-000820</td>
+                    <td>Correção na configuração para bloquear pagamentos em dinheiro</td>
+                </tr>
+                <tr>
+                    <td>703</td>
+                    <td>#0625-000222</td>
+                    <td>Adição de duas novas modalidades de frete para notas avulsas</td>
+                </tr>
+                <tr>
+                    <td>pdv242fpm</td>
+                    <td>#0625-000340</td>
+                    <td>Implementação da opção de pagamento via PIX</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="next-steps">
+            <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+            <ol>
+                <li><strong>Atualize seu ERP</strong> para a versão 1.1.971.201</li>
+                <li><strong>Dúvidas?</strong> Entre em contato pelo <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">WhatsApp do Suporte</a></li>
+            </ol>
+        </div>
+        
+        <h3><span class="emoji">🎯</span> Por Que Isso Importa?</h3>
+        <ul>
+            <li><strong>Conformidade fiscal:</strong> Correções críticas para emissão de notas fiscais</li>
+            <li><strong>Experiência do usuário:</strong> Novas funcionalidades solicitadas pelos clientes</li>
+            <li><strong>Eficiência operacional:</strong> Processos mais ágeis e seguros</li>
+            <li><strong>Flexibilidade:</strong> Novas opções de pagamento e frete</li>
+        </ul>
+    </div>
+</body>
+</html>
