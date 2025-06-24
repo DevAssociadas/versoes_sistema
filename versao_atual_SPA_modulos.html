@@ -6,14 +6,99 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Atualizações do SPA - Módulos IMP, NFE e SINC</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
             background-color: #f9f9f9;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Menu Lateral */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h2 {
+            color: #ecf0f1;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin: 0;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-left-color: #3498db;
+        }
+
+        .sidebar-menu a.active {
+            background-color: #3498db;
+            color: white;
+            border-left-color: #2980b9;
+        }
+
+        /* Botão do menu mobile */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: center;
+            transition: margin-left 0.3s ease;
         }
         
         .changelog-container {
@@ -22,6 +107,8 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 30px;
             margin-bottom: 30px;
+            max-width: 900px;
+            width: 100%;
         }
         
         h1 {
@@ -140,10 +227,24 @@
         .whatsapp-link:hover {
             text-decoration: underline;
         }
-        
+
+        /* Responsividade */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 70px 15px 15px;
             }
             
             .changelog-container {
@@ -155,138 +256,196 @@
                 overflow-x: auto;
             }
         }
+
+        /* Overlay para mobile */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <div class="changelog-container">
-        <h1><span class="emoji">📢</span> Atualizações do SPA - Módulos IMP, NFE e SINC</h1>
-        <p><strong>Data de atualização:</strong> 10/06/2025</p>
-        
-        <!-- IMP Module -->
-        <h2><span class="emoji">📦</span> <span class="module-version">IMP 1.6.52.100</span> Módulo de Importação</h2>
-        <div class="update-type">
-            <p class="bug-fix">🐞 Correção:</p>
-            <ul>
-                <li><strong>Geração de notas em contingência</strong> e nota referenciada <span class="client-tag">Bella Pharma</span></li>
-            </ul>
+    <!-- Botão do menu mobile -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Overlay para mobile -->
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Menu Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Versões SPA</h2>
         </div>
-        
-        <!-- NFE Module -->
-        <h2><span class="emoji">🧾</span> <span class="module-version">NFE 1.6.18.100</span> Módulo de Nota Fiscal Eletrônica</h2>
-        <div class="update-type">
-            <p class="new-feature">✨ Melhoria:</p>
-            <ul>
-                <li><strong>Novas modalidades de frete</strong> para nota avulsa <span class="client-tag">Farmapop</span></li>
-            </ul>
-            
-            <p class="bug-fix">🐞 Correção:</p>
-            <ul>
-                <li><strong>NF-e de devolução ao fornecedor</strong> para produtos controlados com múltiplos lotes <span class="client-tag">Correção Interna</span></li>
-            </ul>
-        </div>
-        
-        <!-- SINC_PDV Module -->
-        <h2><span class="emoji">🔄</span> <span class="module-version">SINC_PDV 2.0.146.200</span> Sincronização PDV</h2>
-        <div class="update-type">
-            <p class="bug-fix">🐞 Correções:</p>
-            <ul>
-                <li><strong>Inclusão de vendas</strong> com itens em Pré-vencidos e tabloides <span class="client-tag">DPPSS</span></li>
-            </ul>
-            
-            <p class="new-feature">✨ Melhorias:</p>
-            <ul>
-                <li><strong>Replicação de grupo de preços</strong> <span class="client-tag">Regional</span></li>
-                <li><strong>Senha para troca de moedas</strong> <span class="client-tag">Trajano</span></li>
-            </ul>
-        </div>
-        
-        <!-- SINC_ADM Module -->
-        <h2><span class="emoji">🔄</span> <span class="module-version">SINC_ADM 2.0.53.100</span> Sincronização ADM</h2>
-        <div class="update-type">
-            <p><em>Atualizações de manutenção e performance</em></p>
-        </div>
-        
-        <!-- SINC_XML Module -->
-        <h2><span class="emoji">🔄</span> <span class="module-version">SINC_XML 2.0.12.100</span> Sincronização XML</h2>
-        <div class="update-type">
-            <p><em>Atualizações de manutenção e performance</em></p>
-        </div>
-        
-        <div class="impact-section">
-            <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
-            <ul>
-                <li><strong>Confiabilidade:</strong> Correções em processos críticos de NF-e e contingência</li>
-                <li><strong>Flexibilidade:</strong> Novas opções de frete e replicação de preços</li>
-                <li><strong>Segurança:</strong> Controle adicional em operações financeiras</li>
-                <li><strong>Estabilidade:</strong> Melhorias nos módulos de sincronização</li>
-            </ul>
-        </div>
-        
-        <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Módulo</th>
-                    <th>Chamado</th>
-                    <th>Descrição</th>
-                    <th>Tela</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>IMP</td>
-                    <td>#0125-000826</td>
-                    <td>Correção na geração de notas em contingência e nota referenciada</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>NFE</td>
-                    <td>#0625-000222</td>
-                    <td>Inserção de duas novas modalidades de frete na nota avulsa</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>NFE</td>
-                    <td>#0125-000790</td>
-                    <td>Ajuste na geração da NF-e de devolução ao fornecedor para produtos com múltiplos lotes</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>SINC_PDV</td>
-                    <td>#0325-000324</td>
-                    <td>Correção na inclusão de vendas com itens promocionais</td>
-                    <td>pdv002is</td>
-                </tr>
-                <tr>
-                    <td>SINC_PDV</td>
-                    <td>#0425-000846</td>
-                    <td>Implementação da replicação de grupo de preços</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>SINC_PDV</td>
-                    <td>#0525-000178</td>
-                    <td>Adição de senha para troca de moedas</td>
-                    <td>002m</td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="next-steps">
-            <h3><span class="emoji">🔜</span> Próximos Passos</h3>
-            <ol>
-                <li><strong>Atualize seu sistema</strong> para as versões mencionadas</li>
-                <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
-            </ol>
-        </div>
-        
-        <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
-        <ul>
-            <li><strong>Conformidade fiscal:</strong> Processos de NF-e mais robustos</li>
-            <li><strong>Operacional:</strong> Menos erros em processos críticos</li>
-            <li><strong>Produtividade:</strong> Novas funcionalidades que agilizam operações</li>
-            <li><strong>Estabilidade:</strong> Melhor performance nos módulos de sincronização</li>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" class="active">Atualizações SPA PDV</a></li>
+            <li><a href="versao_atual_SPA_adm.html">Atualizações SPA ADM</a></li>
+            <li><a href="versao_atual_SPA_financeiro.html">Atualizações SPA Financeiro</a></li>
+            <li><a href="versao_atual_SPA_modulos.html">Atualizações dos demais módulos do SPA</a></li>
+            <li><a href="versao_anterior_SPA_pdv.html">Versões anteriores do SPA PDV</a></li>
         </ul>
-    </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="changelog-container">
+            <h1><span class="emoji">📢</span> Atualizações do SPA - Módulos IMP, NFE e SINC</h1>
+            <p><strong>Data de atualização:</strong> 10/06/2025</p>
+            
+            <!-- IMP Module -->
+            <h2><span class="emoji">📦</span> <span class="module-version">IMP 1.6.52.100</span> Módulo de Importação</h2>
+            <div class="update-type">
+                <p class="bug-fix">🐞 Correção:</p>
+                <ul>
+                    <li><strong>Geração de notas em contingência</strong> e nota referenciada <span class="client-tag">Bella Pharma</span></li>
+                </ul>
+            </div>
+            
+            <!-- NFE Module -->
+            <h2><span class="emoji">🧾</span> <span class="module-version">NFE 1.6.18.100</span> Módulo de Nota Fiscal Eletrônica</h2>
+            <div class="update-type">
+                <p class="new-feature">✨ Melhoria:</p>
+                <ul>
+                    <li><strong>Novas modalidades de frete</strong> para nota avulsa <span class="client-tag">Farmapop</span></li>
+                </ul>
+                
+                <p class="bug-fix">🐞 Correção:</p>
+                <ul>
+                    <li><strong>NF-e de devolução ao fornecedor</strong> para produtos controlados com múltiplos lotes <span class="client-tag">Correção Interna</span></li>
+                </ul>
+            </div>
+            
+            <!-- SINC_PDV Module -->
+            <h2><span class="emoji">🔄</span> <span class="module-version">SINC_PDV 2.0.146.200</span> Sincronização PDV</h2>
+            <div class="update-type">
+                <p class="bug-fix">🐞 Correções:</p>
+                <ul>
+                    <li><strong>Inclusão de vendas</strong> com itens em Pré-vencidos e tabloides <span class="client-tag">DPPSS</span></li>
+                </ul>
+                
+                <p class="new-feature">✨ Melhorias:</p>
+                <ul>
+                    <li><strong>Replicação de grupo de preços</strong> <span class="client-tag">Regional</span></li>
+                    <li><strong>Senha para troca de moedas</strong> <span class="client-tag">Trajano</span></li>
+                </ul>
+            </div>
+            
+            <!-- SINC_ADM Module -->
+            <h2><span class="emoji">🔄</span> <span class="module-version">SINC_ADM 2.0.53.100</span> Sincronização ADM</h2>
+            <div class="update-type">
+                <p><em>Atualizações de manutenção e performance</em></p>
+            </div>
+            
+            <!-- SINC_XML Module -->
+            <h2><span class="emoji">🔄</span> <span class="module-version">SINC_XML 2.0.12.100</span> Sincronização XML</h2>
+            <div class="update-type">
+                <p><em>Atualizações de manutenção e performance</em></p>
+            </div>
+            
+            <div class="impact-section">
+                <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
+                <ul>
+                    <li><strong>Confiabilidade:</strong> Correções em processos críticos de NF-e e contingência</li>
+                    <li><strong>Flexibilidade:</strong> Novas opções de frete e replicação de preços</li>
+                    <li><strong>Segurança:</strong> Controle adicional em operações financeiras</li>
+                    <li><strong>Estabilidade:</strong> Melhorias nos módulos de sincronização</li>
+                </ul>
+            </div>
+            
+            <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Módulo</th>
+                        <th>Chamado</th>
+                        <th>Descrição</th>
+                        <th>Tela</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>IMP</td>
+                        <td>#0125-000826</td>
+                        <td>Correção na geração de notas em contingência e nota referenciada</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>NFE</td>
+                        <td>#0625-000222</td>
+                        <td>Inserção de duas novas modalidades de frete na nota avulsa</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>NFE</td>
+                        <td>#0125-000790</td>
+                        <td>Ajuste na geração da NF-e de devolução ao fornecedor para produtos com múltiplos lotes</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>SINC_PDV</td>
+                        <td>#0325-000324</td>
+                        <td>Correção na inclusão de vendas com itens promocionais</td>
+                        <td>pdv002is</td>
+                    </tr>
+                    <tr>
+                        <td>SINC_PDV</td>
+                        <td>#0425-000846</td>
+                        <td>Implementação da replicação de grupo de preços</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>SINC_PDV</td>
+                        <td>#0525-000178</td>
+                        <td>Adição de senha para troca de moedas</td>
+                        <td>002m</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="next-steps">
+                <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+                <ol>
+                    <li><strong>Atualize seu sistema</strong> para as versões mencionadas</li>
+                    <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
+                </ol>
+            </div>
+            
+            <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+            <ul>
+                <li><strong>Conformidade fiscal:</strong> Processos de NF-e mais robustos</li>
+                <li><strong>Operacional:</strong> Menos erros em processos críticos</li>
+                <li><strong>Produtividade:</strong> Novas funcionalidades que agilizam operações</li>
+                <li><strong>Estabilidade:</strong> Melhor performance nos módulos de sincronização</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Fechar sidebar ao clicar em um link (mobile)
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleSidebar();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

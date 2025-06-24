@@ -6,14 +6,99 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Atualizações do SPA - FINANCEIRO 1.6.37.100</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
             background-color: #f9f9f9;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Menu Lateral */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h2 {
+            color: #ecf0f1;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin: 0;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-left-color: #3498db;
+        }
+
+        .sidebar-menu a.active {
+            background-color: #3498db;
+            color: white;
+            border-left-color: #2980b9;
+        }
+
+        /* Botão do menu mobile */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: center;
+            transition: margin-left 0.3s ease;
         }
         
         .changelog-container {
@@ -22,6 +107,8 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 30px;
             margin-bottom: 30px;
+            max-width: 900px;
+            width: 100%;
         }
         
         h1 {
@@ -138,10 +225,24 @@
         .whatsapp-link:hover {
             text-decoration: underline;
         }
-        
+
+        /* Responsividade */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 70px 15px 15px;
             }
             
             .changelog-container {
@@ -153,104 +254,162 @@
                 overflow-x: auto;
             }
         }
+
+        /* Overlay para mobile */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <div class="changelog-container">
-        <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">FINANCEIRO 1.6.37.100</span></h1>
-        <p><strong>Data de atualização:</strong> 10/06/2025</p>
-        
-        <h2><span class="emoji">💰</span> Módulo Financeiro</h2>
-        <div class="update-type">
-            <p class="bug-fix">🐞 Correções:</p>
-            <ul>
-                <li><strong>Exclusão de transferências de contas</strong> <span class="client-tag">Farmácia Líder</span></li>
-                <li><strong>Gravação do campo de observação</strong> <span class="client-tag">Farmácia Líder</span></li>
-                <li><strong>Alteração de lançamentos</strong> que estavam desaparecendo <span class="client-tag">Farmácia Líder</span></li>
-                <li><strong>Dados preenchidos sendo apagados</strong> <span class="client-tag">Farmácia Líder</span></li>
-                <li><strong>Conferência de boletos</strong> <span class="client-tag">Hamamelis</span></li>
-                <li><strong>Relatório de Duplicatas e Cheques</strong> <span class="client-tag">Farmácia Líder</span></li>
-            </ul>
-            
-            <p class="improvement">📝 Orientações:</p>
-            <ul>
-                <li><strong>Rateio de parcelamentos</strong> <span class="client-tag">Farmácia Líder</span></li>
-            </ul>
+    <!-- Botão do menu mobile -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Overlay para mobile -->
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Menu Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Versões SPA</h2>
         </div>
-        
-        <div class="impact-section">
-            <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
-            <ul>
-                <li><strong>Integridade dos dados:</strong> Correções que previnem perda de informações</li>
-                <li><strong>Controle financeiro:</strong> Melhor gestão de transferências e lançamentos</li>
-                <li><strong>Relatórios confiáveis:</strong> Dados precisos para análise financeira</li>
-                <li><strong>Processos claros:</strong> Orientações sobre rateio de parcelamentos</li>
-            </ul>
-        </div>
-        
-        <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tela</th>
-                    <th>Chamado</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>-</td>
-                    <td>#0125-000381</td>
-                    <td>Correção na exclusão de transferências de contas lançadas</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>#0125-000382</td>
-                    <td>Correção na gravação do campo de observação</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>#0125-000383</td>
-                    <td>Orientações sobre rateio de parcelamentos</td>
-                </tr>
-                <tr>
-                    <td>040d</td>
-                    <td>#0125-000384</td>
-                    <td>Correção na alteração de lançamentos</td>
-                </tr>
-                <tr>
-                    <td>040re/040rep</td>
-                    <td>#0125-000455</td>
-                    <td>Correção para evitar perda de dados preenchidos</td>
-                </tr>
-                <tr>
-                    <td>042</td>
-                    <td>#0125-000569</td>
-                    <td>Correção na tela de conferência de boletos</td>
-                </tr>
-                <tr>
-                    <td>540</td>
-                    <td>#0225-000288</td>
-                    <td>Correção no relatório de Duplicatas e Cheques</td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="next-steps">
-            <h3><span class="emoji">🔜</span> Próximos Passos</h3>
-            <ol>
-                <li><strong>Atualize seu sistema</strong> para a versão FINANCEIRO 1.6.37.100</li>
-                <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
-            </ol>
-        </div>
-        
-        <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
-        <ul>
-            <li><strong>Segurança dos dados:</strong> Prevenção contra perda de informações financeiras</li>
-            <li><strong>Eficiência operacional:</strong> Processos mais robustos e confiáveis</li>
-            <li><strong>Transparência:</strong> Melhor compreensão dos processos de rateio</li>
-            <li><strong>Conformidade:</strong> Relatórios financeiros mais precisos</li>
+        <ul class="sidebar-menu">
+            <li><a href="index.html">Atualizações SPA PDV</a></li>
+            <li><a href="versao_atual_SPA_adm.html">Atualizações SPA ADM</a></li>
+            <li><a href="versao_atual_SPA_financeiro.html" class="active">Atualizações SPA Financeiro</a></li>
+            <li><a href="versao_atual_SPA_modulos.html">Atualizações dos demais módulos do SPA</a></li>
+            <li><a href="versao_anterior_SPA_pdv.html">Versões anteriores do SPA PDV</a></li>
         </ul>
-    </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="changelog-container">
+            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">FINANCEIRO 1.6.37.100</span></h1>
+            <p><strong>Data de atualização:</strong> 10/06/2025</p>
+            
+            <h2><span class="emoji">💰</span> Módulo Financeiro</h2>
+            <div class="update-type">
+                <p class="bug-fix">🐞 Correções:</p>
+                <ul>
+                    <li><strong>Exclusão de transferências de contas</strong> <span class="client-tag">Farmácia Líder</span></li>
+                    <li><strong>Gravação do campo de observação</strong> <span class="client-tag">Farmácia Líder</span></li>
+                    <li><strong>Alteração de lançamentos</strong> que estavam desaparecendo <span class="client-tag">Farmácia Líder</span></li>
+                    <li><strong>Dados preenchidos sendo apagados</strong> <span class="client-tag">Farmácia Líder</span></li>
+                    <li><strong>Conferência de boletos</strong> <span class="client-tag">Hamamelis</span></li>
+                    <li><strong>Relatório de Duplicatas e Cheques</strong> <span class="client-tag">Farmácia Líder</span></li>
+                </ul>
+                
+                <p class="improvement">📝 Orientações:</p>
+                <ul>
+                    <li><strong>Rateio de parcelamentos</strong> <span class="client-tag">Farmácia Líder</span></li>
+                </ul>
+            </div>
+            
+            <div class="impact-section">
+                <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
+                <ul>
+                    <li><strong>Integridade dos dados:</strong> Correções que previnem perda de informações</li>
+                    <li><strong>Controle financeiro:</strong> Melhor gestão de transferências e lançamentos</li>
+                    <li><strong>Relatórios confiáveis:</strong> Dados precisos para análise financeira</li>
+                    <li><strong>Processos claros:</strong> Orientações sobre rateio de parcelamentos</li>
+                </ul>
+            </div>
+            
+            <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tela</th>
+                        <th>Chamado</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>#0125-000381</td>
+                        <td>Correção na exclusão de transferências de contas lançadas</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0125-000382</td>
+                        <td>Correção na gravação do campo de observação</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0125-000383</td>
+                        <td>Orientações sobre rateio de parcelamentos</td>
+                    </tr>
+                    <tr>
+                        <td>040d</td>
+                        <td>#0125-000384</td>
+                        <td>Correção na alteração de lançamentos</td>
+                    </tr>
+                    <tr>
+                        <td>040re/040rep</td>
+                        <td>#0125-000455</td>
+                        <td>Correção para evitar perda de dados preenchidos</td>
+                    </tr>
+                    <tr>
+                        <td>042</td>
+                        <td>#0125-000569</td>
+                        <td>Correção na tela de conferência de boletos</td>
+                    </tr>
+                    <tr>
+                        <td>540</td>
+                        <td>#0225-000288</td>
+                        <td>Correção no relatório de Duplicatas e Cheques</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="next-steps">
+                <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+                <ol>
+                    <li><strong>Atualize seu sistema</strong> para a versão FINANCEIRO 1.6.37.100</li>
+                    <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
+                </ol>
+            </div>
+            
+            <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+            <ul>
+                <li><strong>Segurança dos dados:</strong> Prevenção contra perda de informações financeiras</li>
+                <li><strong>Eficiência operacional:</strong> Processos mais robustos e confiáveis</li>
+                <li><strong>Transparência:</strong> Melhor compreensão dos processos de rateio</li>
+                <li><strong>Conformidade:</strong> Relatórios financeiros mais precisos</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Fechar sidebar ao clicar em um link (mobile)
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleSidebar();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
