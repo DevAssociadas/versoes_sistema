@@ -296,39 +296,33 @@
     <!-- Conteúdo Principal -->
     <main class="main-content">
         <div class="changelog-container">
-            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">Versão 1.1.971.201</span></h1>
-            <p><strong>Data de lançamento:</strong> 12/06/2025</p>
+            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.202</span></h1>
+            <p><strong>Disponibilizado em:</strong> 19/06/2025</p>
             
-            <h2><span class="emoji">💻</span> Módulo PDV - Versão 1.1.971.201</h2>
+            <h2><span class="emoji">💻</span> Módulo PDV</h2>
             <div class="update-type">
-                <p class="new-feature">✨ Novas Funcionalidades:</p>
-                <ul>
-                    <li><strong>Desistência de NFC-e</strong> - Possibilidade de cancelar a emissão antes da confirmação <span class="client-tag">Trajano</span></li>
-                    <li><strong>Senha para troca de moedas</strong> - Nova camada de segurança no caixa <span class="client-tag">Trajano</span></li>
-                    <li><strong>Novas modalidades de frete</strong> - Adicionadas duas novas opções para notas avulsas <span class="client-tag">Farmapop</span></li>
-                    <li><strong>Pagamento via PIX</strong> - Nova opção de pagamento disponível <span class="client-tag">Correção Interna</span></li>
-                </ul>
-                
                 <p class="bug-fix">🐞 Correções:</p>
                 <ul>
-                    <li><strong>NF-e de devolução</strong> - Ajuste para produtos controlados com múltiplos lotes <span class="client-tag">Correção Interna</span></li>
-                    <li><strong>Venda de itens promocionais</strong> - Correção para produtos em Pré-vencidos e tabloides <span class="client-tag">DPPSS</span></li>
-                    <li><strong>Notificações de controlados</strong> - Limite de 10 caracteres implementado <span class="client-tag">Botânica</span></li>
-                    <li><strong>Venda de produtos e serviços</strong> - Correção no mesmo cupom <span class="client-tag">Daniele Brum</span></li>
-                    <li><strong>NF-e referenciada</strong> - Ajuste no cálculo com valor de frete <span class="client-tag">Bom Lar</span></li>
-                    <li><strong>Gerenciamento de entregas</strong> - Correção no campo entregador <span class="client-tag">Bom Lar</span></li>
-                    <li><strong>Inventário por grupo/subgrupo</strong> - Ajuste na filtragem <span class="client-tag">José Vione</span></li>
-                    <li><strong>Restrição de pagamento</strong> - Correção na configuração para bloquear moeda dinheiro <span class="client-tag">Farmácia São Carlos</span></li>
+                    <li><strong>Seleção de tipo de nota</strong> na emissão para CNPJ diferente em transferências (remessas) <span class="client-tag">Farmácia Santa Maria</span></li>
+                    <li><strong>Registro de movimentos e lotes ANVISA</strong> em pré-remessas com produtos controlados <span class="client-tag">São Lucas</span> </li>
+                    <li><strong>Interpretação do valor final</strong> ao conceder descontos na venda <span class="client-tag">São Matheus</span></li>
+                    <li><strong>Validação de quantidades</strong> na devolução de NF de compra <span class="client-tag">Correção Interna</span></li>
+                </ul>
+                
+                <p class="new-feature">✨ Melhorias:</p>
+                <ul>
+                    <li><strong>Bloqueio de unificação</strong> de pré-remessas parcialmente atendidas <span class="client-tag">Regional</span></li>
+                    <li><strong>Botão de desbloqueio</strong> para pré-remessas em uso <span class="client-tag">Correção Interna</span></li>
                 </ul>
             </div>
             
             <div class="impact-section">
-                <h3><span class="emoji">⚙️</span> Impacto para os Clientes</h3>
+                <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
                 <ul>
-                    <li><strong>Farmácias:</strong> Melhorias significativas no controle de medicamentos controlados</li>
-                    <li><strong>Varejo:</strong> Maior flexibilidade em pagamentos e fretes</li>
-                    <li><strong>Segurança:</strong> Novos controles para operações sensíveis</li>
-                    <li><strong>Usabilidade:</strong> Correções que agilizam processos diários</li>
+                    <li><strong>Conformidade fiscal:</strong> Melhor controle em transferências e produtos controlados</li>
+                    <li><strong>Precisão:</strong> Cálculos de descontos e quantidades mais confiáveis</li>
+                    <li><strong>Segurança:</strong> Prevenção de erros em pré-remessas</li>
+                    <li><strong>Produtividade:</strong> Novo botão agiliza o desbloqueio de remessas</li>
                 </ul>
             </div>
             
@@ -337,70 +331,47 @@
                 <thead>
                     <tr>
                         <th>Tela</th>
-                        <th>Código</th>
-                        <th>Mudança</th>
+                        <th>Chamado</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>707pc</td>
-                        <td>#0125-000790</td>
-                        <td>Correção na geração de NF-e de devolução para produtos com múltiplos lotes</td>
+                        <td>-</td>
+                        <td>#0125-000949</td>
+                        <td>Ajuste na seleção do tipo de nota para CNPJ diferente em transferências</td>
+                        <td>Correção</td>
                     </tr>
                     <tr>
-                        <td>pdv002is</td>
-                        <td>#0325-000324</td>
-                        <td>Ajuste na inclusão de itens promocionais (Pré-vencidos e tabloides)</td>
+                        <td>pdv942</td>
+                        <td>#0625-000369</td>
+                        <td>Registro de movimentos e lotes ANVISA em pré-remessas com produtos controlados</td>
+                        <td>Correção</td>
                     </tr>
                     <tr>
-                        <td>610</td>
-                        <td>#0325-000361</td>
-                        <td>Limite de 10 caracteres em notificações de produtos controlados</td>
+                        <td>001aq</td>
+                        <td>#0625-000655</td>
+                        <td>Ajuste na interpretação do valor final ao conceder desconto</td>
+                        <td>Correção</td>
                     </tr>
                     <tr>
-                        <td>002nfg</td>
-                        <td>#0525-000173</td>
-                        <td>Nova opção para cancelar emissão de NFC-e antes da confirmação</td>
+                        <td>pdv707s</td>
+                        <td>#0625-000779</td>
+                        <td>Validação de quantidade informada x quantidade da NF de Fornecedor</td>
+                        <td>Correção</td>
                     </tr>
                     <tr>
-                        <td>002m</td>
-                        <td>#0525-000178</td>
-                        <td>Implementação de senha para operação de troca de moedas</td>
+                        <td>pdv942</td>
+                        <td>#0625-000369</td>
+                        <td>Bloqueio na unificação de pré-remessas parcialmente atendidas</td>
+                        <td>Melhoria</td>
                     </tr>
                     <tr>
-                        <td>001</td>
-                        <td>#0525-000183</td>
-                        <td>Correção na venda combinada de produtos e serviços</td>
-                    </tr>
-                    <tr>
-                        <td>pdv708</td>
-                        <td>#0525-000340</td>
-                        <td>Ajuste na geração de NF-e referenciada com valores de frete</td>
-                    </tr>
-                    <tr>
-                        <td>pdv244e</td>
-                        <td>#0525-000482</td>
-                        <td>Correção no gerenciamento de dados do entregador</td>
-                    </tr>
-                    <tr>
-                        <td>11m</td>
-                        <td>#0525-000816</td>
-                        <td>Ajuste no filtro de inventário por grupo/subgrupo</td>
-                    </tr>
-                    <tr>
-                        <td>pdvini</td>
-                        <td>#0525-000820</td>
-                        <td>Correção na configuração para bloquear pagamentos em dinheiro</td>
-                    </tr>
-                    <tr>
-                        <td>703</td>
-                        <td>#0625-000222</td>
-                        <td>Adição de duas novas modalidades de frete para notas avulsas</td>
-                    </tr>
-                    <tr>
-                        <td>pdv242fpm</td>
-                        <td>#0625-000340</td>
-                        <td>Implementação da opção de pagamento via PIX</td>
+                        <td>pdv942</td>
+                        <td>#0625-000809</td>
+                        <td>Botão para desbloquear pré-remessa com situação "em uso"</td>
+                        <td>Melhoria</td>
                     </tr>
                 </tbody>
             </table>
@@ -408,17 +379,17 @@
             <div class="next-steps">
                 <h3><span class="emoji">🔜</span> Próximos Passos</h3>
                 <ol>
-                    <li><strong>Atualize seu ERP</strong> para a versão 1.1.971.201</li>
-                    <li><strong>Dúvidas?</strong> Entre em contato pelo <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">WhatsApp do Suporte</a></li>
+                    <li><strong>Atualize seu sistema</strong> para a versão PDV 1.1.971.202</li>
+                    <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
                 </ol>
             </div>
             
-            <h3><span class="emoji">🎯</span> Por Que Isso Importa?</h3>
+            <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
             <ul>
-                <li><strong>Conformidade fiscal:</strong> Correções críticas para emissão de notas fiscais</li>
-                <li><strong>Experiência do usuário:</strong> Novas funcionalidades solicitadas pelos clientes</li>
-                <li><strong>Eficiência operacional:</strong> Processos mais ágeis e seguros</li>
-                <li><strong>Flexibilidade:</strong> Novas opções de pagamento e frete</li>
+                <li><strong>Controle rigoroso:</strong> Validações adicionais em processos críticos</li>
+                <li><strong>Redução de erros:</strong> Prevenção de inconsistências em remessas e descontos</li>
+                <li><strong>Agilidade operacional:</strong> Novos recursos para gestão de pré-remessas</li>
+                <li><strong>Conformidade:</strong> Ajustes para atendimento às normas da ANVISA</li>
             </ul>
         </div>
     </main>

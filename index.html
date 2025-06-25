@@ -301,102 +301,71 @@
     <!-- Conteúdo Principal -->
     <main class="main-content">
         <div class="changelog-container">
-            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.202</span></h1>
-            <p><strong>Disponibilizado em:</strong> 19/06/2025</p>
-            
-            <h2><span class="emoji">💻</span> Módulo PDV</h2>
-            <div class="update-type">
-                <p class="bug-fix">🐞 Correções:</p>
-                <ul>
-                    <li><strong>Seleção de tipo de nota</strong> na emissão para CNPJ diferente em transferências (remessas) <span class="client-tag">Farmácia Santa Maria</span></li>
-                    <li><strong>Registro de movimentos e lotes ANVISA</strong> em pré-remessas com produtos controlados <span class="client-tag">São Lucas</span> </li>
-                    <li><strong>Interpretação do valor final</strong> ao conceder descontos na venda <span class="client-tag">São Matheus</span></li>
-                    <li><strong>Validação de quantidades</strong> na devolução de NF de compra <span class="client-tag">Correção Interna</span></li>
-                </ul>
-                
-                <p class="new-feature">✨ Melhorias:</p>
-                <ul>
-                    <li><strong>Bloqueio de unificação</strong> de pré-remessas parcialmente atendidas <span class="client-tag">Regional</span></li>
-                    <li><strong>Botão de desbloqueio</strong> para pré-remessas em uso <span class="client-tag">Correção Interna</span></li>
-                </ul>
-            </div>
-            
-            <div class="impact-section">
-                <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
-                <ul>
-                    <li><strong>Conformidade fiscal:</strong> Melhor controle em transferências e produtos controlados</li>
-                    <li><strong>Precisão:</strong> Cálculos de descontos e quantidades mais confiáveis</li>
-                    <li><strong>Segurança:</strong> Prevenção de erros em pré-remessas</li>
-                    <li><strong>Produtividade:</strong> Novo botão agiliza o desbloqueio de remessas</li>
-                </ul>
-            </div>
-            
-            <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Tela</th>
-                        <th>Chamado</th>
-                        <th>Descrição</th>
-                        <th>Tipo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>-</td>
-                        <td>#0125-000949</td>
-                        <td>Ajuste na seleção do tipo de nota para CNPJ diferente em transferências</td>
-                        <td>Correção</td>
-                    </tr>
-                    <tr>
-                        <td>pdv942</td>
-                        <td>#0625-000369</td>
-                        <td>Registro de movimentos e lotes ANVISA em pré-remessas com produtos controlados</td>
-                        <td>Correção</td>
-                    </tr>
-                    <tr>
-                        <td>001aq</td>
-                        <td>#0625-000655</td>
-                        <td>Ajuste na interpretação do valor final ao conceder desconto</td>
-                        <td>Correção</td>
-                    </tr>
-                    <tr>
-                        <td>pdv707s</td>
-                        <td>#0625-000779</td>
-                        <td>Validação de quantidade informada x quantidade da NF de Fornecedor</td>
-                        <td>Correção</td>
-                    </tr>
-                    <tr>
-                        <td>pdv942</td>
-                        <td>#0625-000369</td>
-                        <td>Bloqueio na unificação de pré-remessas parcialmente atendidas</td>
-                        <td>Melhoria</td>
-                    </tr>
-                    <tr>
-                        <td>pdv942</td>
-                        <td>#0625-000809</td>
-                        <td>Botão para desbloquear pré-remessa com situação "em uso"</td>
-                        <td>Melhoria</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="next-steps">
-                <h3><span class="emoji">🔜</span> Próximos Passos</h3>
-                <ol>
-                    <li><strong>Atualize seu sistema</strong> para a versão PDV 1.1.971.202</li>
-                    <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
-                    <li><strong>Quer saber o que tinha na versão anterior?</strong> Acesse <a href="versao_anterior_SPA_pdv.html" class="whatsapp-link">Versão Anterior SPA PDV</a></li>
-                </ol>
-            </div>
-            
-            <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+                    <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.204</span></h1>
+        <p><strong>Disponibilizado em:</strong> 25/06/2025</p>
+        
+        <h2><span class="emoji">💻</span> Módulo PDV</h2>
+        <div class="update-type">
+            <p class="bug-fix">🐞 Correções:</p>
             <ul>
-                <li><strong>Controle rigoroso:</strong> Validações adicionais em processos críticos</li>
-                <li><strong>Redução de erros:</strong> Prevenção de inconsistências em remessas e descontos</li>
-                <li><strong>Agilidade operacional:</strong> Novos recursos para gestão de pré-remessas</li>
-                <li><strong>Conformidade:</strong> Ajustes para atendimento às normas da ANVISA</li>
+                <li><strong>Adequação para produtos GLP-1</strong> <span class="client-tag">Correção interna</span></li>
+                <li><strong>Rotina de captura de Remessas/NF de Entrada</strong> sem produtos controlados no mesmo dia de inventário ANVISA/SNGPC <span class="client-tag">São Carlos</span></li>
+                <li><strong>Gravação de parâmetros de NFe/NFCe/NFS</strong> <span class="client-tag">Correção interna</span></li>
             </ul>
+        </div>
+        
+        <div class="impact-section">
+            <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
+            <ul>
+                <li><strong>Conformidade regulatória:</strong> Suporte a produtos da classe GLP-1</li>
+                <li><strong>Controle de inventário:</strong> Melhor sincronização com a ANVISA/SNGPC</li>
+                <li><strong>Estabilidade:</strong> Gravação correta dos parâmetros de notas fiscais</li>
+            </ul>
+        </div>
+        
+        <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Chamado</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#0625-001069</td>
+                    <td>Adequação do sistema para inclusão dos produtos contemplados na GLP-1</td>
+                    <td>Correção</td>
+                </tr>
+                <tr>
+                    <td>#0625-001078</td>
+                    <td>Ajuste na rotina de captura de Remessas/NF de Entrada sem produtos controlados no mesmo dia de inventário ANVISA/SNGPC</td>
+                    <td>Correção</td>
+                </tr>
+                <tr>
+                    <td>#0625-001097</td>
+                    <td>Ajuste na rotina de gravação dos parâmetros de NFe/NFCe/NFS</td>
+                    <td>Correção</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="next-steps">
+            <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+            <ol>
+                <li><strong>Atualize seu sistema</strong> para a versão PDV 1.1.971.204</li>
+                <li><strong>Dúvidas sobre GLP-1?</strong> Consulte a explicação <a href="https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2025/canetas-emagrecedoras-so-poderao-ser-vendidas-com-retencao-de-receita" class="whatsapp-link" target="_blank">na ANVISA</a> sobre essa regulamentação</li>
+                <li><strong>Suporte:</strong> <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">WhatsApp do Suporte</a></li>
+            </ol>
+        </div>
+        
+        <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+        <ul>
+            <li><strong>Conformidade:</strong> Adequação às exigências para medicamentos GLP-1</li>
+            <li><strong>Precisão:</strong> Controle mais rigoroso de inventário com a ANVISA</li>
+            <li><strong>Estabilidade:</strong> Processos fiscais mais confiáveis</li>
+        </ul>
         </div>
     </main>
 
