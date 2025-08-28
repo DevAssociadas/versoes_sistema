@@ -96,6 +96,8 @@
             flex: 1;
             margin-left: 250px;
             padding: 20px 40px;
+            flex-direction: column;
+            align-items: center;
             display: flex;
             justify-content: center;
             transition: margin-left 0.3s ease;
@@ -290,11 +292,177 @@
             <li><a href="versao_atual_SPA_financeiro.html">Atualizações SPA Financeiro</a></li>
             <li><a href="versao_atual_SPA_modulos.html">Atualizações dos demais módulos do SPA</a></li>
             <li><a href="versao_anterior_SPA_pdv.html" class="active">Versões anteriores do SPA PDV</a></li>
+            <li><a href="versao_anterior_SPA_adm.html">Versões anteriores do SPA ADM</a></li>
         </ul>
     </nav>
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
+        <div class="changelog-container">
+            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.209</span></h1>
+            <p><strong>Disponibilizado em:</strong> 12/08/2025</p>
+        
+        <h2><span class="emoji">💻</span> Módulo PDV</h2>
+        <div class="update-type">
+            <p class="bug-fix">🐞 Correções:</p>
+            <ul>
+                <li><strong>Priorização de descontos</strong> - Ajuste para considerar corretamente tablóides internos e encartes mensais via precific_item (Proffer) <span class="client-tag">Regional</span></li>
+                <li><strong>Campo "compras"</strong> - Correção no cálculo conforme período selecionado <span class="client-tag">Associadas Encantado</span></li>
+                <li><strong>Prescrições</strong> - Ajuste para criação consistente de registros de prescrição <span class="client-tag">LVD</span></li>
+                <li><strong>Impressão de etiquetas</strong> - Ajuste para modelos Zebra via Proffer <span class="client-tag">Regional</span></li>
+                <li><strong>Cobrança de crediários</strong> - Correção no recebimento de parcelas <span class="client-tag">Interno</span></li>
+            </ul>
+            <p class="improvement">🛠️ Melhorias:</p>
+            <ul>
+                <li><strong>Produtos GLP-1</strong> - Captura obrigatória de lotes para agonistas <span class="client-tag">Associadas Encantado</span></li>
+                <li><strong>Validador ANVISA/SNGPC</strong> - Detecção de divergências no envio de dados <span class="client-tag">Interno</span></li>
+            </ul>
+            
+            <p class="new-feature">✨ Novas Funcionalidades:</p>
+            <ul>
+                <li><strong>Bloqueio de recebimento</strong> - Validação de moedas habilitadas no terminal para títulos de crediário <span class="client-tag">São Carlos</span></li>
+            </ul>
+        </div>
+        
+        <div class="impact-section">
+            <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
+            <ul>
+                <li><strong>Precisão comercial:</strong> Descontos aplicados corretamente conforme regras de tablóides</li>
+                <li><strong>Conformidade regulatória:</strong> Melhor controle de produtos GLP-1 e envios à ANVISA</li>
+                <li><strong>Segurança financeira:</strong> Bloqueio de recebimentos em moedas não autorizadas</li>
+                <li><strong>Integridade de dados:</strong> Registros completos de prescrições e etiquetas precisas</li>
+            </ul>
+        </div>
+        
+        <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Chamado</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#0725-001334</td>
+                    <td>Priorização de descontos de tablóides internos</td>
+                    <td>Correção</td>
+                </tr>
+                <tr>
+                    <td>#0625-000782</td>
+                    <td>Ajuste no cálculo do campo "compras" por período</td>
+                    <td>Correção</td>
+                </tr>
+                <tr>
+                    <td>#0725-000514</td>
+                    <td>Captura obrigatória de lotes para produtos GLP-1</td>
+                    <td>Melhoria</td>
+                </tr>
+                <tr>
+                    <td>#0725-001023</td>
+                    <td>Criação consistente de registros de prescrição</td>
+                    <td>Correção</td>
+                </tr>
+                <tr>
+                    <td>#0825-000239</td>
+                    <td>Validador de divergências para ANVISA/SNGPC</td>
+                    <td>Melhoria</td>
+                </tr>
+                <tr>
+                    <td>#0825-000209</td>
+                    <td>Bloqueio de recebimento por moeda não habilitada</td>
+                    <td>Nova Funcionalidade</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="next-steps">
+            <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+            <ol>
+                <li><strong>Atualize seu sistema</strong> para a versão PDV 1.1.971.209</li>
+                <li><strong>Verifique as configurações</strong> de moedas habilitadas por terminal</li>
+                <li><strong>Dúvidas sobre GLP-1?</strong> Consulte a explicação <a href="https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2025/canetas-emagrecedoras-so-poderao-ser-vendidas-com-retencao-de-receita" class="whatsapp-link" target="_blank">na ANVISA</a> sobre essa regulamentação</li>
+                <li><strong>Suporte:</strong> <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">WhatsApp do Suporte</a></li>
+            </ol>
+        </div>
+        
+        <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+        <ul>
+            <li><strong>Conformidade farmacêutica:</strong> Controle rigoroso de medicamentos especiais</li>
+            <li><strong>Precisão financeira:</strong> Cálculos corretos de descontos e recebíveis</li>
+            <li><strong>Operação otimizada:</strong> Processos mais robustos para prescrições e etiquetas</li>
+            <li><strong>Prevenção de erros:</strong> Validações automáticas críticas</li>
+        </ul>
+    </div>
+    <div class="changelog-container">
+        <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.205</span></h1>
+            <p><strong>Disponibilizado em:</strong> 25/06/2025</p>
+            
+            <h2><span class="emoji">💻</span> Módulo PDV</h2>
+            <div class="update-type">
+                <p class="bug-fix">🐞 Correções:</p>
+                <ul>
+                    <li><strong>Adequação para produtos GLP-1</strong> <span class="client-tag">Correção interna</span></li>
+                    <li><strong>Rotina de captura de Remessas/NF de Entrada</strong> sem produtos controlados no mesmo dia de inventário ANVISA/SNGPC <span class="client-tag">São Carlos</span></li>
+                    <li><strong>Gravação de parâmetros de NFe/NFCe/NFS</strong> <span class="client-tag">Correção interna</span></li>
+                </ul>
+            </div>
+            
+            <div class="impact-section">
+                <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
+                <ul>
+                    <li><strong>Conformidade regulatória:</strong> Suporte a produtos da classe GLP-1</li>
+                    <li><strong>Controle de inventário:</strong> Melhor sincronização com a ANVISA/SNGPC</li>
+                    <li><strong>Estabilidade:</strong> Gravação correta dos parâmetros de notas fiscais</li>
+                </ul>
+            </div>
+            
+            <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Chamado</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#0625-001069</td>
+                        <td>Adequação do sistema para inclusão dos produtos contemplados na GLP-1</td>
+                        <td>Correção</td>
+                    </tr>
+                    <tr>
+                        <td>#0625-001078</td>
+                        <td>Ajuste na rotina de captura de Remessas/NF de Entrada sem produtos controlados no mesmo dia de inventário ANVISA/SNGPC</td>
+                        <td>Correção</td>
+                    </tr>
+                    <tr>
+                        <td>#0625-001097</td>
+                        <td>Ajuste na rotina de gravação dos parâmetros de NFe/NFCe/NFS</td>
+                        <td>Correção</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="next-steps">
+                <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+                <ol>
+                    <li><strong>Atualize seu sistema</strong> para a versão PDV 1.1.971.205</li>
+                    <li><strong>Dúvidas sobre GLP-1?</strong> Consulte a explicação <a href="https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2025/canetas-emagrecedoras-so-poderao-ser-vendidas-com-retencao-de-receita" class="whatsapp-link" target="_blank">na ANVISA</a> sobre essa regulamentação</li>
+                    <li><strong>Suporte:</strong> <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">WhatsApp do Suporte</a></li>
+            </ol>
+            </div>
+            
+            <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+            <ul>
+                <li><strong>Conformidade:</strong> Adequação às exigências para medicamentos GLP-1</li>
+                <li><strong>Precisão:</strong> Controle mais rigoroso de inventário com a ANVISA</li>
+                <li><strong>Estabilidade:</strong> Processos fiscais mais confiáveis</li>
+            </ul>
+        </div>
+
         <div class="changelog-container">
             <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.205</span></h1>
             <p><strong>Disponibilizado em:</strong> 25/06/2025</p>
@@ -363,7 +531,7 @@
             </ul>
         </div>
 
-        <div class="changelog-container">
+        <!--<div class="changelog-container">
             <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.202</span></h1>
             <p><strong>Disponibilizado em:</strong> 19/06/2025</p>
             
@@ -459,7 +627,7 @@
                 <li><strong>Agilidade operacional:</strong> Novos recursos para gestão de pré-remessas</li>
                 <li><strong>Conformidade:</strong> Ajustes para atendimento às normas da ANVISA</li>
             </ul>
-        </div>
+        </div>-->
 
     </main>
 
