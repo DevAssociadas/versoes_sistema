@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Atualizações SPA ADM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Menu Lateral */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h2 {
+            color: #ecf0f1;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin: 0;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-left-color: #3498db;
+        }
+
+        .sidebar-menu a.active {
+            background-color: #3498db;
+            color: white;
+            border-left-color: #2980b9;
+        }
+
+        /* Botão do menu mobile */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: center;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .changelog-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h2 {
+            color: #3498db;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .version {
+            background-color: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .update-type {
+            margin-top: 20px;
+        }
+        
+        .new-feature {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .bug-fix {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+            list-style-type: none;
+            padding-left: 25px;
+        }
+        
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .client-tag {
+            display: inline-block;
+            background-color: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+        
+        .impact-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .next-steps {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .whatsapp-link {
+            color: #075E54;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .whatsapp-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 70px 15px 15px;
+            }
+            
+            .changelog-container {
+                padding: 20px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        /* Overlay para mobile */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão do menu mobile -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Overlay para mobile -->
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Menu Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Versões SPA</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html">Atualizações SPA PDV</a></li>
+            <li><a href="versao_atual_SPA_adm.html">Atualizações SPA ADM</a></li>
+            <li><a href="versao_atual_SPA_financeiro.html">Atualizações SPA Financeiro</a></li>
+            <li><a href="versao_atual_SPA_modulos.html">Atualizações dos demais módulos do SPA</a></li>
+            <li><a href="versao_anterior_SPA_pdv.html">Versões anteriores do SPA PDV</a></li>
+            <li><a href="versao_anterior_SPA_adm.html" class="active">Versões anteriores do SPA ADM</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="changelog-container">
+            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">ADM 1.6.91.108</span></h1>
+            <p><strong>Data de atualização:</strong> 08/08/2025</p>
+            
+            <h2><span class="emoji">⚙️</span> Módulo ADM</h2>
+            <div class="update-type">
+            <p class="bug-fix">🐞 Correções:</p>
+            <ul>
+                <li><strong>Mensagem de exclusão de conveniado</strong> - Agora exibe código/nome ao invés do limite <span class="client-tag">Hamamélis</span></li>
+                <li><strong>Relatório de Campanhas Internas</strong> - Valores impressos igual à tela <span class="client-tag">Alencar</span></li>
+                <li><strong>Mensagem de confirmação</strong> em alterações de campanhas internas <span class="client-tag">São Carlos</span></li>
+            </ul>
+            
+            <p class="improvement">🛠️ Melhorias:</p>
+            <ul>
+                <li><strong>Parâmetro para bloquear alteração de MS</strong> em medicamentos controlados <span class="client-tag">São Carlos</span></li>
+                <li><strong>Limite de 990 itens</strong> para NF referenciada de convênios com mensagem explicativa <span class="client-tag">FarmaFlores</span></li>
+                <li><strong>Filtros de Grupo/Subgrupo</strong> em sugestão de compras agora pesquisam em maiúsculas <span class="client-tag">Nativa</span></li>
+            </ul>
+            
+            <p class="new-feature">✨ Novas Funcionalidades:</p>
+            <ul>
+                <li><strong>Aviso para importação de tabloide</strong> via Excel quando não atender requisitos <span class="client-tag">Interno</span></li>
+                <li><strong>Filtro para produtos GLP-1 (Agonistas)</strong> nas telas de pesquisa (0009) e ajuste em massa (2061) <span class="client-tag">Interno</span></li>
+                <li><strong>Agrupamento de Compras</strong> - Novo recurso para gestão de pedidos <span class="client-tag">Interno</span></li>
+            </ul>
+        </div>
+            
+            <div class="impact-section">
+                <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
+                <ul>
+                    <li><strong>Conformidade:</strong> Melhor controle de medicamentos controlados e GLP-1</li>
+                    <li><strong>Precisão:</strong> Relatórios confiáveis e mensagens claras</li>
+                    <li><strong>Produtividade:</strong> Novo recurso de agrupamento de compras</li>
+                    <li><strong>Experiência:</strong> Filtros mais intuitivos e avisos preventivos</li>
+            </ul>
+            </div>
+            
+            <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+            <table>
+                <thead>
+                        <tr>
+                        <th>Tela</th>
+                        <th>Chamado</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0018</td>
+                        <td>#0625-000259</td>
+                        <td>Correção na mensagem de exclusão de conveniado</td>
+                        <td>Correção</td>
+                    </tr>
+                    <tr>
+                        <td>2095rv</td>
+                        <td>#0625-000260</td>
+                        <td>Ajuste no relatório impresso de Campanhas Internas</td>
+                        <td>Correção</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0725-001289</td>
+                        <td>Parâmetro para bloquear alteração de MS em controlados</td>
+                        <td>Melhoria</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0725-001518</td>
+                        <td>Ajuste na mensagem de confirmação de campanhas</td>
+                        <td>Correção</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0725-001582</td>
+                        <td>Limite de 990 itens para NF referenciada de convênios</td>
+                        <td>Melhoria</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0825-000219</td>
+                        <td>Aviso para importação de tabloide via Excel</td>
+                        <td>Nova Funcionalidade</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0825-000229</td>
+                        <td>Filtros de Grupo/Subgrupo em maiúsculas</td>
+                        <td>Melhoria</td>
+                    </tr>
+                    <tr>
+                        <td>0009/2061</td>
+                        <td>#0725-000531</td>
+                        <td>Filtro para produtos GLP-1 (Agonistas)</td>
+                        <td>Nova Funcionalidade</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>#0825-000228</td>
+                        <td>Agrupamento de Compras</td>
+                        <td>Nova Funcionalidade</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="next-steps">
+                <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+                <ol>
+                    <li><strong>Atualize seu sistema</strong> para a versão ADM 1.6.91.108</li>
+                    <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
+                </ol>
+            </div>
+            
+            <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+            <ul>
+                <li><strong>Controle rigoroso</strong> de medicamentos controlados e GLP-1</li>
+                <li><strong>Processos otimizados</strong> com novos filtros e agrupamentos</li>
+                <li><strong>Prevenção de erros</strong> com avisos e limites claros</li>
+                <li><strong>Relatórios confiáveis</strong> para tomada de decisão</li>
+            </ul>
+        </div>
+        <div class="changelog-container">
+            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">ADM 1.6.91.104</span></h1>
+            <p><strong>Data de atualização:</strong> 25/06/2025</p>
+            
+            <h2><span class="emoji">⚙️</span> Módulo ADM</h2>
+            <div class="update-type">
+                <p class="new-feature">✨ Melhorias:</p>
+                <ul>
+                    <li><strong>Replicação de grupos de preços</strong> <span class="client-tag">Regional</span></li>
+                    <li><strong>Senha na troca de moedas</strong> <span class="client-tag">Trajano</span></li>
+                </ul>
+                
+                <p class="bug-fix">🐞 Correções:</p>
+                <ul>
+                    <li><strong>Relatório de Demonstrativo de Resultado</strong> <span class="client-tag">LVD</span></li>
+                    <li><strong>Regras de desconto a prazo</strong> <span class="client-tag">Farmácia São Carlos</span></li>
+                </ul>
+            </div>
+            
+            <div class="impact-section">
+                <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
+                <ul>
+                    <li><strong>Gestão de preços:</strong> Agilidade na replicação de grupos de preços</li>
+                    <li><strong>Segurança:</strong> Controle adicional em operações financeiras</li>
+                    <li><strong>Relatórios:</strong> Dados mais precisos nas campanhas internas</li>
+                    <li><strong>Descontos:</strong> Maior flexibilidade nas regras comerciais</li>
+                </ul>
+            </div>
+            
+            <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tela</th>
+                        <th>Chamado</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1020</td>
+                        <td>#0425-000846</td>
+                        <td>Criada funcionalidade para replicação de grupos de preços</td>
+                    </tr>
+                    <tr>
+                        <td>2095R</td>
+                        <td>#0525-000072</td>
+                        <td>Correção no relatório de Demonstrativo de Resultado das Campanhas Internas</td>
+                    </tr>
+                    <tr>
+                        <td>002M</td>
+                        <td>#0525-000178</td>
+                        <td>Adicionada opção de exigir senha na troca de moedas</td>
+                    </tr>
+                    <tr>
+                        <td>1021</td>
+                        <td>#0525-000949</td>
+                        <td>Correção na exclusão de regras de desconto e inclusão de regras a prazo</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="next-steps">
+                <h3><span class="emoji">🔜</span> Próximos Passos</h3>
+                <ol>
+                    <li><strong>Atualize seu sistema</strong> para a versão ADM 1.6.91.104</li>
+                    <li><strong>Dúvidas?</strong> Contate nosso <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">Suporte via WhatsApp</a></li>
+                </ol>
+            </div>
+            
+            <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
+            <ul>
+                <li><strong>Otimização de tempo</strong> com replicação de grupos de preços</li>
+                <li><strong>Controle financeiro reforçado</strong> com validação por senha</li>
+                <li><strong>Relatórios confiáveis</strong> para tomada de decisão</li>
+                <li><strong>Flexibilidade comercial</strong> com novas regras de desconto</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Fechar sidebar ao clicar em um link (mobile)
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleSidebar();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
