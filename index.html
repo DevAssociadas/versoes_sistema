@@ -302,39 +302,39 @@
     <!-- Conteúdo Principal -->
     <main class="main-content">
         <div class="changelog-container">
-            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.211</span></h1>
-            <p><strong>Disponibilizado em:</strong> 15/08/2025</p>
+            <h1><span class="emoji">📢</span> Atualizações do SPA <span class="version">PDV 1.1.971.212</span></h1>
+            <p><strong>Disponibilizado em:</strong> 02/09/2025</p>
         
         <h2><span class="emoji">💻</span> Módulo PDV</h2>
         <div class="update-type">
             <p class="bug-fix">🐞 Correções:</p>
             <ul>
-                <li><strong>Controle de Caixa</strong> - Corrigida a validação de status de Vendas, para que não ocorra movimentações após o fechamento do caixa <span class="client-tag">Trajano</span></li>
-                <li><strong>Produtos sem Giro</strong> - Correção na sintaxe da geração do relatório <span class="client-tag">Hamamélis</span></li>
-                <li><strong>Contagem de Estoque</strong> - Ajuste nos processo de integração com a MR Talque <span class="client-tag">Hamamélis</span></li>
+                <li><strong>Correção no TEF/POS</strong> para contemplar dados dos adquirentes do cartão obrigatórios no XML <span class="client-tag">Interno</span></li>
+                <li><strong>Transações POS</strong> agora OBRIGA que seja informado o número da autorização e o CNPJ cadastrado para a adquirente <span class="client-tag">Interno</span></li>
+            <!-- <li><strong>Contagem de Estoque</strong> - Ajuste nos processo de integração com a MR Talque <span class="client-tag">Hamamélis</span></li>
                 <li><strong>Etiqueta de Controlados</strong> - Ajuste na reimpressão de etiquetas para receitas, onde a data agora sai com a informação da data da movimentação <span class="client-tag">Shidokan</span></li>
-                <!-- <li><strong>Cobrança de crediários</strong> - Correção no recebimento de parcelas <span class="client-tag">Interno</span></li> -->
-            </ul>
+                <li><strong>Cobrança de crediários</strong> - Correção no recebimento de parcelas <span class="client-tag">Interno</span></li> -->
+        <!--</ul>
             <p class="improvement">🛠️ Melhorias:</p>
             <ul>
                 <li><strong>Observações de Venda</strong> - Criado parâmetro para permitir a gravação de observações após a venda já ter sido concluída <span class="client-tag">Harff Bueno</span></li>
-                <!-- <li><strong>Validador ANVISA/SNGPC</strong> - Detecção de divergências no envio de dados <span class="client-tag">Interno</span></li> -->
+                <li><strong>Validador ANVISA/SNGPC</strong> - Detecção de divergências no envio de dados <span class="client-tag">Interno</span></li>
             </ul>
             
             <p class="new-feature">✨ Novas Funcionalidades:</p>
              <ul> 
                 <li><strong>Homologação de Impressora de Etiquetas</strong> - Modelo ELGIN L42, agora pode ser usada no SPA <span class="client-tag">Vitapharma</span></li>
-            </ul>
+            </ul> -->
         </div>
         
         <div class="impact-section">
             <h3><span class="emoji">⚡</span> Impacto para os Clientes</h3>
             <ul>
-                <li><strong>Controle de Caixa:</strong> Estornos, Devoluções, Recargas, nenhum movimento mais é feito, enquanto um caixa não está com o status ABERTO</li>
-                <li><strong>Agilidade e Controle:</strong> Integração com o parceiro MR Talque para agilizar contagens e Controle mais avançado dos Produtos que não Movimentam na Farmácia</li>
+                <li><strong>Atendimento ao FISCO:</strong> Correção das autorizações de NFCe ajustando os dados de ADQUIRENTE e AUTORIZAÇÃO, contemplando a obrigatoriedade da SEFAZ Nacional</li>
+            <!--<li><strong>Agilidade e Controle:</strong> Integração com o parceiro MR Talque para agilizar contagens e Controle mais avançado dos Produtos que não Movimentam na Farmácia</li>
                 <li><strong>Segurança das Informações:</strong> Possibilidade de Gravação de Observações nas Vendas já concluídas</li>
                 <li><strong>Nova Opção de Impressora:</strong> Homologação com impressora da linha ELGIN, que tem o custo mais em conta</li>
-            </ul>
+            </ul>-->
         </div>
         
         <h3><span class="emoji">📋</span> Detalhes Técnicos</h3>
@@ -348,16 +348,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>#0725-001549</td>
-                    <td>Validação de Status antes da execução do comando de ESTORNO, DEVOLUÇÕES, etc.</td>
+                    <td>-</td>
+                    <td>Correção da Autorização do Cartão, informando dados do Adquirente e Autorização no XML</td>
                     <td>Correção</td>
                 </tr>
                 <tr>
                     <td>-</td>
-                    <td>Ajuste no relatório de Produtos sem Giro</td>
+                    <td>Correção dos Lançamentos de POS, exigindo as informações de Autorização e CNPJ Adquirente</td>
                     <td>Correção</td>
                 </tr>
-                <tr>
+            <!--<tr>
                     <td>-</td>
                     <td>Correção no processo de Contagem do modelo MR Talque</td>
                     <td>Correção</td>
@@ -376,27 +376,27 @@
                     <td>-</td>
                     <td>Homologação de impressora ELGIN para emissão de Etiquetas</td>
                     <td>Nova Funcionalidade</td>
-                </tr>
+                </tr>-->
             </tbody>
         </table>
         
         <div class="next-steps">
             <h3><span class="emoji">🔜</span> Próximos Passos</h3>
             <ol>
-                <li><strong>Atualize seu sistema</strong> para a versão PDV 1.1.971.211</li>
+                <li><strong>Atualize seu sistema</strong> para a versão PDV 1.1.971.212</li>
                 <li><strong>Verifique as configurações</strong> de moedas habilitadas por terminal</li>
-                <!-- <li><strong>Dúvidas sobre GLP-1?</strong> Consulte a explicação <a href="https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2025/canetas-emagrecedoras-so-poderao-ser-vendidas-com-retencao-de-receita" class="whatsapp-link" target="_blank">na ANVISA</a> sobre essa regulamentação</li> -->
+                <li><strong>Dúvidas sobre GLP-1?</strong> Consulte a explicação <a href="https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2025/canetas-emagrecedoras-so-poderao-ser-vendidas-com-retencao-de-receita" class="whatsapp-link" target="_blank">na ANVISA</a> sobre essa regulamentação</li>
                 <li><strong>Suporte:</strong> <a href="http://wa.me/555133633900" class="whatsapp-link" target="_blank">WhatsApp do Suporte</a></li>
             </ol>
         </div>
         
         <h3><span class="emoji">🎯</span> Benefícios das Atualizações</h3>
         <ul>
-            <li><strong>Controle de Movimentações Financeiras:</strong> Controle rigoroso de movimentações, conforme o status do CAIXA</li>
-            <li><strong>Estoques regularizados:</strong> Processo de contagem e controle de produtos que não movimentam, diminuindo a quantidade de "dinheiro" parado</li>
+            <li><strong>Correção Fiscal:</strong> Controle e obrigatoriedade ajustadas dentro das solicitações da SEFAZ Nacional</li>
+        <!--    <li><strong>Estoques regularizados:</strong> Processo de contagem e controle de produtos que não movimentam, diminuindo a quantidade de "dinheiro" parado</li>
             <li><strong>Operação otimizada:</strong> Nova opção de etiqueta de preços e reimpressão do comprovante corretamente ajustada</li>
             <li><strong>Controle e organização:</strong> Observações precisas e maior agilidade na busca dos dados</li>
-        </ul>
+        </ul>-->
         </div>
     </main>
 
