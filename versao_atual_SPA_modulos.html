@@ -300,36 +300,41 @@
     <main class="main-content">
         <div class="changelog-container">
             <h1><span class="emoji">📢</span> Atualizações do SPA - Módulos IMP, NFE e SINC</h1>
-            <p><strong>Data de atualização:</strong> 10/06/2025</p>
+            <p><strong>Data de atualização:</strong> 01/09/2025</p>
             
             <!-- IMP Module -->
-            <h2><span class="emoji">📦</span> <span class="module-version">IMP 1.6.52.100</span> Módulo de Importação</h2>
+            <h2><span class="emoji">📦</span> <span class="module-version">IMP 1.6.54.100</span> Módulo de Importação</h2>
             <div class="update-type">
                 <p class="bug-fix">🐞 Correção:</p>
                 <ul>
                     <li><strong>Geração de notas em contingência</strong> e nota referenciada <span class="client-tag">Bella Pharma</span></li>
+                    <li><strong>Correção da emissão da NFCe</strong> para carregar os dados do ADQUIRENTE <span class="client-tag">Interno</span></li>
                 </ul>
             </div>
             
             <!-- NFE Module -->
-            <h2><span class="emoji">🧾</span> <span class="module-version">NFE 1.6.18.100</span> Módulo de Nota Fiscal Eletrônica</h2>
+            <h2><span class="emoji">🧾</span> <span class="module-version">NFE 1.6.19.100</span> Módulo de Nota Fiscal Eletrônica</h2>
             <div class="update-type">
                 <p class="new-feature">✨ Melhoria:</p>
                 <ul>
+                    <li><strong>Implementação do cBENEF</strong> para atendimento da obrigatoriedade do SEFAZ SC <span class="client-tag">Regional</span></li>
                     <li><strong>Novas modalidades de frete</strong> para nota avulsa <span class="client-tag">Farmapop</span></li>
                 </ul>
                 
                 <p class="bug-fix">🐞 Correção:</p>
                 <ul>
-                    <li><strong>NF-e de devolução ao fornecedor</strong> para produtos controlados com múltiplos lotes <span class="client-tag">Correção Interna</span></li>
+                    <li><strong>Rotina ASSÍNCRONA</strong> ajustada para autorização das NFe no Ambiente Nacional <span class="client-tag">Interna</span></li>
+                    <li><strong>NF-e de devolução ao fornecedor</strong> para produtos controlados com múltiplos lotes <span class="client-tag">Interna</span></li>
                 </ul>
             </div>
             
             <!-- SINC_PDV Module -->
-            <h2><span class="emoji">🔄</span> <span class="module-version">SINC_PDV 2.0.146.211</span> Sincronização PDV</h2>
+            <h2><span class="emoji">🔄</span> <span class="module-version">SINC_PDV 2.0.146.212</span> Sincronização PDV</h2>
             <div class="update-type">
                 <p class="bug-fix">🐞 Correções:</p>
                 <ul>
+                    <li><strong>Correção no Processo de Sincronização</strong> dos Adquirentes/Bandeiras para o PDV, excluindo as informações do GERAL, indentificando bandeiras e adquirentes já cadastrados <span class="client-tag">Interno</span></li>
+                    <li><strong>Correção na Exclusão</strong> de adquirentes quando realizado o processo de ajuste no ADM referente ao vínculo Empresa x Bandeira x Adquirente <span class="client-tag">Interno</span></li>
                     <li><strong>Gerais</strong> da versão anterior <span class="client-tag">Interno</span></li>
                     <li><strong>Criação da coluna nome_dep</strong> na tabela duplic_rec para o banco de dados <span class="client-tag">Harff</span></li>
                 </ul>
